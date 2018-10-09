@@ -5,10 +5,14 @@ import theme from '../styles/theme'
 const withThemeProvider = (WrappedComponent) => {
   return class WithThemeProvider extends React.Component{
 
-      static async getInitialProps(...args) {
-        const props = await WrappedComponent.getInitialProps(args)
-        return props
+    static async getInitialProps(...args) {
+      if(!WrappedComponent.getInitialProps ) {
+        return {args}
       }
+
+      const props = await WrappedComponent.getInitialProps(args)
+      return {...props}
+    }
 
       render(){
         const { props } = this
