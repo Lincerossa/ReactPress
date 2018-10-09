@@ -3,7 +3,7 @@ import withLayout from './withLayout'
 import withThemeProvider from './withThemeProvider'
 
 
-export default (options) => (WrappedComponents) => compose(
+export default (options) => WrappedComponent => compose(
   withThemeProvider,
   withLayout(options),
-)(WrappedComponents)
+)(WrappedComponent)

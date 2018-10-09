@@ -1,14 +1,23 @@
 import React from 'react'
 import { Layout } from '../components'
 
+const withLayout = (options) => WrappedComponent => {
+  return class WithLayout extends React.Component{
 
+      static async getInitialProps(...args) {
+        const props = await WrappedComponent.getInitialProps(args)
+        return props
+      }
 
-const WithLayout = (options) => WrappedComponent => props => {
-  return (
-    <Layout options={options} {...props}>
-      <WrappedComponent {...props} />
-    </Layout>
-  )
+      render(){
+        const { props } = this
+        return (
+          <Layout options={options} {...props}>
+            <WrappedComponent {...props} />
+          </Layout>
+        )
+    }
+  }
 }
 
-export default WithLayout
+export default withLayout

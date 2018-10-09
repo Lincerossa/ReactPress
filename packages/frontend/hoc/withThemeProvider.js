@@ -2,13 +2,23 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import theme from '../styles/theme'
 
+const withThemeProvider = (WrappedComponent) => {
+  return class WithThemeProvider extends React.Component{
 
-const WithThemeProvider = WrappedComponent => props => {
-  return (
-    <ThemeProvider theme={theme}>
-      <WrappedComponent {...props} />
-    </ThemeProvider>
-  )
+      static async getInitialProps(...args) {
+        const props = await WrappedComponent.getInitialProps(args)
+        return props
+      }
+
+      render(){
+        const { props } = this
+        return (
+           <ThemeProvider theme={theme}>
+            <WrappedComponent {...props} />
+          </ThemeProvider>
+        )
+    }
+  }
 }
 
-export default WithThemeProvider
+export default withThemeProvider
