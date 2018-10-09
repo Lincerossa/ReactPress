@@ -7,11 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "now-build": "npm install && npm run build",
+    "now-start": "npm run start",
+    "deploy": "now -e NODE_ENV=production"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.8.0",
     "compose": "^0.1.2",
     "next": "^7.0.1",

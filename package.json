@@ -7,9 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "init": "npm install && lerna bootstrap",
     "frontend": "cd packages/frontend && npm run dev",
-    "now-build": "npm run init && cd packages/frontend && npm run build",
-    "now-start": "cd packages/frontend && npm run start",
-    "deploy": "now -e NODE_ENV=production"
+    "frontend-deploy":"cd packages/frontend && npm run deploy"
   },
   "author": "",
   "license": "ISC",
