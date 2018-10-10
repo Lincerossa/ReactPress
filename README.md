@@ -4,6 +4,6 @@
 
 
 
-# Avvio progetto
+# Avvio progetto 
 
-## npm run frontend
+## npm run dev
