@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout } from '../components'
+import Layout from '../components/Layout'
 
 const withLayout = (options) => WrappedComponent => {
   return class WithLayout extends React.Component{

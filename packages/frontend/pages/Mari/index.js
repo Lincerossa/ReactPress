@@ -1,11 +1,12 @@
 import React from 'react'
 import globalProvider from '../../hoc'
 import * as S from './styles'
-import { Background, Padder, Wrapper, RichText } from '../../components/';
+import { Background, Padder, Wrapper, RichText } from 'components/lib';
 import theme from '../../styles/theme';
 
 
-const Page = () => {
+const Page = (props) => {
+  
   return <S.Page>
     <Background color={{
       background: theme.colors.main,
