@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "init": "npm install && lerna bootstrap",
+    "components-build": "cd packages/components && npm run compile",
+    "init": "npm install && lerna bootstrap && npm run components-build",
     "frontend": "cd packages/frontend && npm run dev",
-    "frontend-deploy":"cd packages/frontend && npm run deploy"
+    "now-build": "npm run init && cd packages/frontend && npm run build",
+    "now-start": "cd packages/frontend && npm run start",
+    "deploy": "now -e NODE_ENV=production"
   },
   "author": "",
   "license": "ISC",
