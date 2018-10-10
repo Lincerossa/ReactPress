@@ -1,7 +1,8 @@
 import React from 'react'
+import Head from 'next/head'
+
 import * as S from './styles'
 
-import Head from 'next/head'
 
 
 export default ({children, options}) => {
