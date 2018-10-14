@@ -1,4 +1,4 @@
-const main = "https://www.obama.org/wp-json/wp/v2"
+const main = `${process.env.WEBSITE}/wp-json/wp/v2`
 
 const api = {
   main,
