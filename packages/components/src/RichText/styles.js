@@ -8,6 +8,14 @@ export const RichText = styled.div`
     line-height: 1.4;
   }
 
+  h1{
+    margin: 0;
+
+  }
+
+  h2{
+    margin: 0;
+  }
 
 
 `

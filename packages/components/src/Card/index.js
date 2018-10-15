@@ -25,7 +25,7 @@ const Card = ({ options = {}, media, supertitle, title, tags, subtitle, content 
           </S.TagsWrapper>
         }
         {subtitle && <S.Subtitle full={full} dangerouslySetInnerHTML={{__html: subtitle}} />}
-        {html && <S.Content >{html}</S.Content>}
+        {html && <S.Content dangerouslySetInnerHTML={{__html: html}} />}
       </S.Description>
     </S.Card>
   )
