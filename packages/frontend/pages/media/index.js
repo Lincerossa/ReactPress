@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Link from 'next/link'
 import globalProvider from '../../hoc'
 import * as S from './styles'
 import { Background, Padder, Wrapper, RichText, List, Card } from 'components/lib';
@@ -10,7 +11,7 @@ class Page extends Component {
 
   static async getInitialProps(){
 
-    const authors = await axios.get(api.authors).then(x => x.data)
+    const users = await axios.get(api.users).then(x => x.data)
 
     const media = await axios
       .get(api.media)
@@ -19,8 +20,11 @@ class Page extends Component {
     return {
       media: media.map( x => ({
         ...x,
-        author: authors.find(author => author.id === x.author)
-      }))
+        author: users.find(author => author.id === x.author)
+      })),
+      seo:{
+        title:"media"
+      }
     }
 
   }
@@ -45,8 +49,6 @@ class Page extends Component {
                   items={media}
                   ListItem={({item}) => {
                     const { guid, caption, alt_text, date, title, type, author } = item
-
-console.log("------->", item)
                     const props = {
                       media: {
                         url: guid.rendered,
@@ -64,6 +66,7 @@ console.log("------->", item)
                 />
               )
             }
+            <Link href="/users">users</Link>
             </Wrapper>
           </Padder>
         </Background>

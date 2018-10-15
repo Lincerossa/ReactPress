@@ -15,6 +15,9 @@ class Page extends Component {
 
     return {
       users,
+      seo:{
+        title:"users"
+      }
     }
 
   }
@@ -23,7 +26,6 @@ class Page extends Component {
 
     const { users } = this.props
 
-    console.log({ users })
 
     return(
 
