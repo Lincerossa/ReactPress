@@ -2,21 +2,25 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import globalProvider from '../../hoc'
 import * as S from './styles'
-import { Background, Padder, Wrapper, RichText } from 'components/lib';
+import { Background, Padder, Wrapper, RichText, List, Card } from 'components/lib';
 
 import api from '../../api'
-
 
 class Page extends Component {
 
   static async getInitialProps(){
 
-    const media = await axios.get(api.media).then(x => x.data)
+    const authors = await axios.get(api.authors).then(x => x.data)
 
-    console.log("mediaaaaaaaaaa", media)
-    
+    const media = await axios
+      .get(api.media)
+      .then(x => x.data)
+
     return {
-      media,
+      media: media.map( x => ({
+        ...x,
+        author: authors.find(author => author.id === x.author)
+      }))
     }
 
   }
@@ -25,37 +29,45 @@ class Page extends Component {
 
     const { media } = this.props
 
-    
     return(
 
       <S.Page>
-          <Background color={{
-            background: "rebeccapurple",
-            text: 'white'
-          }}>
+        <Background color={{
+          background: "rebeccapurple",
+          text: 'white'
+        }}>
           <Padder>
             <Wrapper>
             {
               media &&
-              media.length &&
-              media.map(({media_details, description, date}) => {
-                const image = media_details && media_details.sizes && media_details.sizes.medium && media_details.sizes.medium.source_url
+              media.length && (
+                <List
+                  items={media}
+                  ListItem={({item}) => {
+                    const { guid, caption, alt_text, date, title, type, author } = item
 
-                return(
-                  <S.Media>
-                    <S.Image src={image} />
-                    {description &&  <RichText>{description.rendered}</RichText>}
-                  </S.Media>
-                )
-              }
-
+console.log("------->", item)
+                    const props = {
+                      media: {
+                        url: guid.rendered,
+                        title: title.rendered,
+                        alt: "titolo dell'immagine"
+                      },
+                      tags: [type],
+                      supertitle: author && author.name,
+                      title: title.rendered,
+                      subtitle: caption.renderd,
+                      content: alt_text
+                    }
+                    return <Card {...props} />
+                  }}
+                />
               )
             }
             </Wrapper>
           </Padder>
-            
-          </Background>
-        </S.Page>
+        </Background>
+      </S.Page>
 
     )
   }
