@@ -9,22 +9,22 @@ import api from '../../api'
 
 class Page extends Component {
 
-  static async getInitialProps(){
+  static async getInitialProps() {
 
-    const users = await axios.get(api.users).then(x => x.data)
+    const users = await axios.get(api.getUsers()).then(x => x.data)
 
     const media = await axios
-      .get(api.media)
+      .get(api.getMedia())
       .then(x => x.data)
 
     return {
-      media: media.map( x => ({
+      media: media.map(x => ({
         ...x,
         author: users.find(author => author.id === x.author)
       })),
-      seo:{
-        title:"media"
-      }
+      seo: {
+        title: "media"
+      },
     }
 
   }

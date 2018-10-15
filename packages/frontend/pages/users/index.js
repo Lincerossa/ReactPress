@@ -11,7 +11,7 @@ class Page extends Component {
 
   static async getInitialProps(){
 
-    const users = await axios.get(api.users).then(x => x.data)
+    const users = await axios.get(api.getUsers()).then(x => x.data)
 
     return {
       users,

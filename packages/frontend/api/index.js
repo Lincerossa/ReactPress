@@ -1,17 +1,21 @@
 const main = `${process.env.WEBSITE}/wp-json/wp/v2`
 
+const retrieveQuery = (parameters) => {
+  const { id, category, slug } = parameters || {}
+  return [
+    id && `/${id}`,
+    category && `?category=${category}`,
+    slug && `?slug=${slug}`,
+  ].join('')
+}
+
+const retrieveApi = (resource, parameters) => `${main}/${resource}/${retrieveQuery(parameters)}`
+
 const api = {
-  users: `${main}/users`,
-  getUser: id => `${main}/users/${id}`,
-
-  posts: `${main}/posts`,
-  getPost: id => `${main}/posts/${id}`,
-  getPostsByCategoryId: categoryId => `${main}/posts/?categories=${categoryId}`,
-  categories: `${main}/categories`,
-  getCategory: id => `${main}/categories/${id}`,
-  getCategoryBySlug: slug => `${main}/categories/?slug=${slug}`,
-
-  media: `${main}/media`,
+  getUsers: parameters => retrieveApi('users', parameters),
+  getPosts: parameters => retrieveApi('posts', parameters),
+  getCategories: parameters => retrieveApi('categories', parameters),
+  getMedia: parameters => retrieveApi('media', parameters),
 }
 
 

@@ -9,20 +9,17 @@ import api from '../../api'
 
 class Page extends Component {
 
-  static async getInitialProps({ query }){
+  static async getInitialProps({ query }) {
 
-    const category = await axios.get(api.getCategoryBySlug(query.category)).then(x => x.data[0])
-
-    const posts = category && await axios.get(api.getPostsByCategoryId(category.id)).then(x => x.data)
-    
+    const category = await axios.get(api.getCategories({ slug: query.category })).then(x => x.data[0])
+    const posts = category && await axios.get(api.getPosts({ category: category.id })).then(x => x.data)
     return {
-      seo:{
-        title:"category"
+      seo: {
+        title: 'category',
       },
       category,
       posts,
     }
-
   }
 
   render() {
