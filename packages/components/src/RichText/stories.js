@@ -5,5 +5,5 @@ import RichText from './index'
 
 storiesOf('RichText', module)
   .add('with a text', () => (
-    <RichText><h2>prova</h2></RichText>
+    <RichText><h2>prfova</h2></RichText>
   ));

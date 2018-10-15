@@ -6,7 +6,6 @@ export const List = styled.div`
   margin: 0;
   display: ${props => props.vertical ? 'block': 'flex'};
   flex-wrap: nowrap;
-  margin: 0 -.5rem;
   overflow-x: scroll;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;

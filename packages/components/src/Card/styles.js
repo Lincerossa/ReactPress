@@ -56,14 +56,14 @@ export const Title = styled.div`
   font-weight: 600;
   line-height: 1;
   margin-bottom: .5rem;
-  color: ${props => props.full ? "white" : props.theme.colors.dark} ;
+  color: ${props => props.full ? "white" : 'grey'} ;
 `
 
 export const Subtitle = styled.div`
   margin-bottom: .5rem;
   text-transform: uppercase;
   font-size: .75rem;
-  color: ${props => props.full ? "white" : props.theme.colors.dark} ;
+  color: ${props => props.full ? "white" : 'grey'} ;
 `
 
 export const Content = styled.div`
