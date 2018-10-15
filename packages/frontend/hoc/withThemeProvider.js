@@ -10,7 +10,7 @@ const withThemeProvider = (WrappedComponent) => {
         return {args}
       }
 
-      const props = await WrappedComponent.getInitialProps(args)
+      const props = await WrappedComponent.getInitialProps(...args)
       return {...props}
     }
 

@@ -9,14 +9,14 @@ const withLayout = (options) => WrappedComponent => {
           return {}
         }
 
-        const props = await WrappedComponent.getInitialProps(args)
+        const props = await WrappedComponent.getInitialProps(...args)
 
         return {...props}
       }
 
       render(){
         const { props } = this
-        
+
         return (
           <Layout options={options} {...props}>
             <WrappedComponent {...props} />
