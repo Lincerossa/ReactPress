@@ -1,0 +1,7 @@
+{
+  "alias": "cartolinazze",
+  "env": {
+    "NODE_ENV": "production",
+    "WEBSITE": "http://www.react.netsons.org"
+  }
+}

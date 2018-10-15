@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "alias": "cartolinazze",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "components-build": "cd packages/components && npm run compile",
@@ -14,7 +13,7 @@
     "dev": "concurrently \"npm run frontend\" \"npm run components-watch\" \"npm run components\"",
     "now-build": "npm run init && cd packages/frontend && npm run build",
     "now-start": "cd packages/frontend && npm run start",
-    "deploy": "now -e NODE_ENV=production -e WEBSITE=http://www.react.netsons.org",
+    "deploy": "now",
     "deploy-alias": "now alias"
   },
   "author": "",
