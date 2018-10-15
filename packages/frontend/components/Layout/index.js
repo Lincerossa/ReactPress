@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 import * as S from './styles'
 
-
+import Header from './Header'
 
 export default ({children, options, seo}) => {
   
@@ -18,11 +18,11 @@ export default ({children, options, seo}) => {
         <meta name="description"  />
       </Head>
       <S.Layout basic={basic} >
-      { !basic && <div>header</div>}
+      { !basic && <S.HeaderWrapper><Header /></S.HeaderWrapper>}
         <S.Main>
           {children}
         </S.Main>
-        { !basic && <div>footer</div>}
+        { !basic && <S.FooterWrapper>footerWrapper</S.FooterWrapper>}
       </S.Layout>
     </React.Fragment>
   )
