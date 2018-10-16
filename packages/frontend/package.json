@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node server",
+    "dev": "babel-node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production babel-node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
     "axios": "^0.18.0",
     "babel-plugin-inline-dotenv": "^1.1.2",
     "babel-plugin-styled-components": "^1.8.0",
@@ -21,6 +23,7 @@
     "express": "^4.16.4",
     "next": "^7.0.1",
     "next-routes": "^1.4.2",
+    "nodemailer": "^4.6.8",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "recompose": "^0.30.0",
