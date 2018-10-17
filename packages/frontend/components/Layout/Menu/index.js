@@ -4,23 +4,57 @@ import Link from 'next/link'
 import * as S from './styles'
 
 
+const Item = ({href, text}) => (
+  <S.Item>
+    {
+      href ? (
+         <Link href={`/${href}`}>
+          <S.A>
+            <S.MenuItemTitle>{text}</S.MenuItemTitle>
+          </S.A>
+        </Link>
+      ) : (
+        <S.MenuItemTitle>{text}</S.MenuItemTitle>
+      )
+    }
+  </S.Item>
+)
+
+
+
+
 export default ({ menu }) => {
   
   const { items } = menu
-
+  
   return(
     <S.Menu>
-    {
-      items.map(({ object, object_slug, title }) => {
+      <S.MenuItem>
+        <Item
+          href=" "
+          text="homepage"
+        />
+      </S.MenuItem>
 
-        console.log("--------->", object_slug)
+    {
+      items.map(({ object, object_slug, title, children }) => {
         return(
           <S.MenuItem>
-            <Link href={`/${object_slug}`}>
-              <S.A>
-                <S.MenuItemTitle>{title}</S.MenuItemTitle>
-              </S.A>
-            </Link>
+
+            <Item
+              href={object_slug}
+              text={title}
+            />
+            {children && children.length > 0 && <S.MenuItemSub>
+              {
+                children.map(({object_slug, title}) => (
+                  <Item
+                    href={object_slug}
+                    text={title}
+                  />
+                ))
+              }
+            </S.MenuItemSub>}
           </S.MenuItem>
         )
       })
