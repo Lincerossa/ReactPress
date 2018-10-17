@@ -56,10 +56,36 @@ app.prepare().then(() => {
     const categories = await axios.get(api.getCategories()).then(x => x.data)
     const posts = await axios.get(api.getPosts()).then(x => x.data)
 
-    return app.render(req, res, '/home', {
+    return app.render(req, res, '/', {
       categories,
       posts,
     })
+  })
+
+    server.get('/chi-siamo', (req, res) => {
+    return app.render(req, res, '/team',)
+  })
+
+  server.get('/il-nostro-team', (req, res) => {
+    return app.render(req, res, '/team',)
+  })
+
+  server.get('/i-nostri-lavori', (req, res) => {
+    return app.render(req, res, '/categories', { url:'i-nostri-lavori'}, {})
+  })
+
+  server.get('/:page', async (req, res, next) => {
+
+    const endpoint = api.getPages({ slug: req.params.page })
+
+    const page = await axios.get(endpoint).then(x => x.data[0])
+ 
+    if (page) {
+      return app.render(req, res, '/page', {
+        page
+      })
+    }
+    next('route')
   })
 
   server.get('/i-nostri-lavori/:category', async (req, res, next) => {
@@ -75,8 +101,6 @@ app.prepare().then(() => {
     }
     next('route')
   })
-
-
 
   server.get('/i-nostri-lavori/:category/:post', async (req, res, next) => {
     const post = await axios.get(api.getPosts({ slug: req.params.post })).then(x => x.data[0])
