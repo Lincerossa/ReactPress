@@ -14,6 +14,7 @@ const retrieveApi = (resource, parameters) => `${main}/${resource}/${retrieveQue
 const api = {
   getUsers: parameters => retrieveApi('users', parameters),
   getPosts: parameters => retrieveApi('posts', parameters),
+  getPages: parameters => retrieveApi('pages', parameters),
   getCategories: parameters => retrieveApi('categories', parameters),
   getMedia: parameters => retrieveApi('media', parameters),
   getMenus: `${process.env.WEBSITE}/wp-json/wp-api-menus/v2/menus/`
