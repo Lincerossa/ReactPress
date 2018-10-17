@@ -47,7 +47,6 @@ class Page extends Component {
           <Wrapper>
             <List items={posts} ListItem={({item}) => {
               const { title, excerpt, slug, date } = item
-              console.log("item", item)
               const props = {
                 media: {
                   url: "http://www.unsplash.it/400/500",

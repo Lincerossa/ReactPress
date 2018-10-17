@@ -14,8 +14,10 @@ class Page extends Component {
   }
 
  
-  static async getInitialProps(props){
+  static async getInitialProps({ query }){
+ 
     return {
+      query,
       seo:{
         title: "chi siamo"
       }
@@ -27,7 +29,7 @@ class Page extends Component {
     return(
 
       <S.Page>
-         team
+         pagina istituzionale standard
       </S.Page>
 
     )

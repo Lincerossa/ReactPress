@@ -33,7 +33,7 @@ class Page extends Component {
           <Padder>
             <S.PageHeader>
               <RichText>
-                <h1>Categorie</h1>
+                <h1>Categdorie</h1>
               </RichText>
             </S.PageHeader>
           </Padder>

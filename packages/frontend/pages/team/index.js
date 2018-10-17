@@ -17,7 +17,7 @@ class Page extends Component {
   static async getInitialProps(props){
     return {
       seo:{
-        title: "chi siamo"
+        title: "team"
       }
     }
 
