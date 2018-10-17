@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "babel-node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production babel-node server.js"
+    "start": "NODE_ENV=production node server.js"
   },
   "author": "",
   "license": "ISC",

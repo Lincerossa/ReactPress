@@ -1,9 +1,8 @@
-import next from 'next'
-import nodemailer from 'nodemailer'
-import axios from 'axios'
-import routes from './routes'
-import api from './api'
-import Category from './pages/category'
+const next = require('next')
+const nodemailer = require('nodemailer')
+const axios = require('axios')
+const routes = require('./routes')
+const api = require('./api')
 
 const app = next({dev: process.env.NODE_ENV !== 'production'})
 const handler = routes.getRequestHandler(app)
@@ -52,9 +51,20 @@ app.prepare().then(() => {
     return 'marci'
   })
 
+
+  server.get('/', async (req, res) => {
+    const categories = await axios.get(api.getCategories()).then(x => x.data)
+    const posts = await axios.get(api.getPosts()).then(x => x.data)
+
+    return app.render(req, res, '/home', {
+      categories,
+      posts,
+    })
+  })
+
   server.get('/:category', async (req, res, next) => {
-    const { url } = req
-    const category = await axios.get(api.getCategories({ slug: url })).then(x => x.data[0])
+   
+    const category = await axios.get(api.getCategories({ slug: req.params.category })).then(x => x.data[0])
 
     if (category) {
       return app.render(req, res, '/category', {
@@ -67,7 +77,6 @@ app.prepare().then(() => {
 
 
   server.get('/:category/:post', async (req, res, next) => {
-
     const post = await axios.get(api.getPosts({ slug: req.params.post })).then(x => x.data[0])
     const category = await axios.get(api.getCategories({ slug: req.params.category })).then(x => x.data[0])
 

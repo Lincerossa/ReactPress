@@ -18,5 +18,4 @@ const api = {
   getMedia: parameters => retrieveApi('media', parameters),
 }
 
-
-export default api
+module.exports = api
