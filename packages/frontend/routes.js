@@ -2,6 +2,7 @@ const routes = require('next-routes')
 
 
 module.exports = routes()
-  // .add('home', '/', 'home') // home
+  .add('categories', '/i-nostri-lavori', 'categories')
+  .add('asdasd', '/chi-siamo', 'about')
 
 

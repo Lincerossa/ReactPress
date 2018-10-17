@@ -1,10 +1,10 @@
 const main = `${process.env.WEBSITE}/wp-json/wp/v2`
 
 const retrieveQuery = (parameters) => {
-  const { id, category, slug } = parameters || {}
+  const { id, categories, slug } = parameters || {}
   return [
     id && `/${id}`,
-    category && `?category=${category}`,
+    categories && `?categories=${categories}`,
     slug && `?slug=${slug}`,
   ].join('')
 }

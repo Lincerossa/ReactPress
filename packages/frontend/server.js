@@ -62,13 +62,15 @@ app.prepare().then(() => {
     })
   })
 
-  server.get('/:category', async (req, res, next) => {
+  server.get('/i-nostri-lavori/:category', async (req, res, next) => {
    
     const category = await axios.get(api.getCategories({ slug: req.params.category })).then(x => x.data[0])
+    const posts = category && await axios.get(api.getPosts({ categories: category.id })).then(x => x.data)
 
     if (category) {
       return app.render(req, res, '/category', {
         category,
+        posts
       })
     }
     next('route')
@@ -76,9 +78,9 @@ app.prepare().then(() => {
 
 
 
-  server.get('/:category/:post', async (req, res, next) => {
+  server.get('/i-nostri-lavori/:category/:post', async (req, res, next) => {
     const post = await axios.get(api.getPosts({ slug: req.params.post })).then(x => x.data[0])
-    const category = await axios.get(api.getCategories({ slug: req.params.category })).then(x => x.data[0])
+    const category = post && await axios.get(api.getCategories({ slug: req.params.category })).then(x => x.data[0])
 
     if (post && category) {
       return app.render(req, res, '/post', {
