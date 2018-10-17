@@ -1,16 +1,18 @@
 import React from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 
 import * as S from './styles'
 
-import Header from './Header'
 import Footer from './Footer'
+import Menu from './Menu'
 
 export default ({children, options, seo, menu, footer}) => {
   
   const basic = options && options.layout && options.layout.basic
 
   const { title } = seo
+  
    return(
     <React.Fragment>
       <Head>
@@ -20,9 +22,14 @@ export default ({children, options, seo, menu, footer}) => {
       </Head>
       <S.Layout basic={basic} >
         { !basic && (
-        <S.HeaderWrapper>
-          <Header menu={menu} />
-        </S.HeaderWrapper>
+          <S.Header>
+            <Link href="/">
+              <S.A>
+                <S.HeaderLogo>qui logo</S.HeaderLogo>
+              </S.A>
+            </Link>
+            <Menu menu={menu}>qui hamburger</Menu>
+          </S.Header>
         )}
         <S.Main>
           {children}
