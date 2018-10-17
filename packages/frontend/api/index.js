@@ -16,6 +16,7 @@ const api = {
   getPosts: parameters => retrieveApi('posts', parameters),
   getCategories: parameters => retrieveApi('categories', parameters),
   getMedia: parameters => retrieveApi('media', parameters),
+  getMenus: `${process.env.WEBSITE}/wp-json/wp-api-menus/v2/menus/`
 }
 
 module.exports = api

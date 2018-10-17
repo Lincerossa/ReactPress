@@ -4,8 +4,9 @@ import Head from 'next/head'
 import * as S from './styles'
 
 import Header from './Header'
+import Footer from './Footer'
 
-export default ({children, options, seo}) => {
+export default ({children, options, seo, menu, footer}) => {
   
   const basic = options && options.layout && options.layout.basic
 
@@ -18,11 +19,19 @@ export default ({children, options, seo}) => {
         <meta name="description"  />
       </Head>
       <S.Layout basic={basic} >
-      { !basic && <S.HeaderWrapper><Header /></S.HeaderWrapper>}
+        { !basic && (
+        <S.HeaderWrapper>
+          <Header menu={menu} />
+        </S.HeaderWrapper>
+        )}
         <S.Main>
           {children}
         </S.Main>
-        { !basic && <S.FooterWrapper>footerWrapper</S.FooterWrapper>}
+        { !basic && (
+          <S.FooterWrapper footer={footer}>
+            <Footer footer={footer} />
+          </S.FooterWrapper>
+        )}
       </S.Layout>
     </React.Fragment>
   )

@@ -37,3 +37,9 @@ export const HeaderHamburger = styled.div``
 export const FooterWrapper = styled.div`
   background-color: black;
 `
+
+
+export const Footer = styled.div`
+  background-color: black;
+  color: white;
+`
