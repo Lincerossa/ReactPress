@@ -13,42 +13,25 @@ class Page extends Component {
     this.state = {}
   }
 
-  // handleSendEmail() {
-  //   axios.post('/email', {
-  //     data: {
-  //       name: 'nome',
-  //       email: 'marcelloluatti@test.com',
-  //       messsage: 'ciao cicicno bellissimo'
-  //     },
-  //   })
-  //   .then((response) => {
-  //     console.log("response", response)
-  //   })
-  // }
-
-  
+ 
   static async getInitialProps({ query }){
 
-    const { posts, categories } = query
-
+ 
     return {
-      categories,
-      posts,
       query,
       seo:{
-        title: "homepage"
+        title: "chi siamo"
       }
     }
 
   }
 
   render() {
-    const { categories, posts } = this.props
-    console.log({categories, posts})
     return(
 
       <S.Page>
-         homepage
+         chi siamo 
+         pagina magica
       </S.Page>
 
     )
