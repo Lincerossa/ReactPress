@@ -1,7 +1,24 @@
-import getPropsFromWpContent from "../getPropsFromWpContent"
+import getPropsFromWpContent from '../getPropsFromWpContent'
 
-const string = `striga prova ** "Component":"RichText", "props": "c'era ancora tanto da decidere" ** altro`
+const string = `striga prova ** "Component":"Bomba", "props": "c'era ancora tanto da decidere" ** altro`
 
-test("getPropsFromWpContent", () => {
-  expect(getPropsFromWpContent(string)).toEqual([{Component: 'String', props: 'striga prova ' }, { Component:'RichText', props: 'c\'era ancora tanto da decidere' }, {Component: 'String', props: ' altro'}])
+test('getPropsFromWpContent', () => {
+  expect(getPropsFromWpContent(string)).toEqual([
+    {
+      Component: 'RichText',
+      props: {
+        text: 'striga prova ',
+      },
+    },
+    {
+      Component: 'Bomba',
+      props: 'c\'era ancora tanto da decidere',
+    },
+    {
+      Component: 'RichText',
+      props: {
+        text: ' altro',
+      },
+    },
+  ])
 })

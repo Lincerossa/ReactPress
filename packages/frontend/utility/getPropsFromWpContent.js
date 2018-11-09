@@ -32,8 +32,10 @@ export default (wpContent, specialChar = '*') => {
     .map(str => {
       if(str.indexOf("Component") === -1) {
         return {
-          Component: 'String',
-          props: str
+          Component: 'RichText',
+          props: {
+            text: str
+          }
         }
       }
 
