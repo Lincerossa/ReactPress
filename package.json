@@ -4,18 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint",
+    "init": "npm install && lerna bootstrap",
     "components-build": "cd packages/components && npm run compile",
     "components-watch": "cd packages/components && npm run watch",
-    "init": "npm install && lerna bootstrap && npm run components-build",
     "components": "cd packages/components && npm run storybook",
     "frontend": "cd packages/frontend && npm run dev",
     "dev": "concurrently \"npm run frontend\" \"npm run components-watch\" \"npm run components\"",
-    "now-build": "npm run init && cd packages/frontend && npm run build",
-    "now-start": "cd packages/frontend && npm run start",
-    "deploy": "now",
-    "deploy-alias": "now alias"
+    "prod": "npm run components-build && cd packages/frontend && npm run build && npm run prod"
   },
   "author": "",
   "license": "ISC",
