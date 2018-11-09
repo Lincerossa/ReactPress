@@ -7,7 +7,7 @@
     "test": "jest --watch",
     "dev": "babel-node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "prod": "babel-node server.js"
   },
   "jest": {
     "projects": [
