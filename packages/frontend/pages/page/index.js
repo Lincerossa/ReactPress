@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
-import { Background, Padder, Wrapper } from 'components/lib';
+import { Background, Padder, Wrapper, RichText } from 'components/lib';
 import axios from 'axios'
 
 import globalProvider from '../../hoc'
 import * as S from './styles'
 import api from '../../api'
+import getPropsFromWpContent from '../../utility/getPropsFromWpContent'
+
+
+var decode = (str) => {
+    return str.replace(/&#(\d+);/g, function(match, dec) {
+				return String.fromCharCode(dec);
+			});
+}
 
 class Page extends Component {
 
@@ -16,8 +24,12 @@ class Page extends Component {
  
   static async getInitialProps({ query }){
  
+    const { page } = query
+
+
     return {
-      query,
+      page,
+      
       seo:{
         title: "chi siamo"
       }
@@ -26,10 +38,16 @@ class Page extends Component {
   }
 
   render() {
+    
+    const { page, users } = this.props
+
+    console.log("-----",page.content.rendered)
+
     return(
 
       <S.Page>
-         pagina istituzionale standard
+        pagina istituzionale standard
+        <RichText text={page.content.rendered} />
       </S.Page>
 
     )

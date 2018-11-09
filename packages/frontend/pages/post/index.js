@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import globalProvider from '../../hoc'
-import { Background, Padder, Wrapper, PostHero } from 'components/lib'
+import * as Components from 'components/lib'
 import * as S from './styles'
-
+import getPropsFromWpContent from '../../utility/getPropsFromWpContent'
 import api from '../../api'
-import RichText from 'components/lib/RichText'
 
 
 const ccc =  {
@@ -37,17 +36,24 @@ class Page extends Component {
     
     const { post, category } = this.props
 
+    const propsFromWpContent = getPropsFromWpContent(post.content.rendered)
+
     return (
 
       <S.Page>
-        <PostHero
+        <Components.PostHero
           {...ccc}
           supertitle={category.name}
           title={post.title.rendered}
           subtitle={post.excerpt.rendered}
         />
-        <RichText
-        text={post.content.rendered} />
+        {
+          propsFromWpContent &&
+          propsFromWpContent.map(prop => {
+            const CC = Components[prop.Component]
+            return CC && <CC {...prop.props} />
+          })
+        }
           
       </S.Page>
 

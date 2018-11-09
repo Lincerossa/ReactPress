@@ -8,14 +8,21 @@ import api from '../../api'
 
 class Page extends Component {
 
+
+
+
+
   constructor() {
     super()
     this.state = {}
+  
   }
 
  
   static async getInitialProps(props){
+    const users = await axios.get(api.getUsers()).then(x => x.data)
     return {
+      users,
       seo:{
         title: "team"
       }
@@ -24,10 +31,14 @@ class Page extends Component {
   }
 
   render() {
+    const { users } = this.props
     return(
 
       <S.Page>
          team
+          {
+          users.map(user => <p>{user.name}</p>)
+        }
       </S.Page>
 
     )

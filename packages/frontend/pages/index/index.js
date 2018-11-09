@@ -44,7 +44,7 @@ class Page extends Component {
 
   render() {
     const { categories, posts } = this.props
-    console.log({categories, posts})
+    
     return(
 
       <S.Page>
