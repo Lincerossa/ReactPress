@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "babel src --out-dir lib",
     "watch": "babel src --watch --out-dir lib",
     "storybook": "start-storybook -p 6006",
