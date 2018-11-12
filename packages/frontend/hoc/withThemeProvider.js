@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import theme from '../styles/theme'
+import theme from 'styles/theme'
 
 const withThemeProvider = (WrappedComponent) => {
   return class WithThemeProvider extends React.Component{

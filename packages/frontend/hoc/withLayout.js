@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
-import Layout from '../components/Layout'
-import api from '../api'
+import Layout from 'components/Layout'
+import api from 'api'
 
 const getMenus = async () => {
   const menus = await axios.get(api.getMenus).then(x => x.data)

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Background, Padder, Wrapper } from 'components/lib';
 import axios from 'axios'
 
-import globalProvider from '../../hoc'
+import globalProvider from 'hoc'
+import api from 'api'
 import * as S from './styles'
-import api from '../../api'
 
 class Page extends Component {
 
@@ -44,7 +44,6 @@ class Page extends Component {
 
   render() {
     const { categories, posts } = this.props
-    
     return(
 
       <S.Page>

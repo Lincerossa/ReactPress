@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import globalProvider from '../../hoc'
+import globalProvider from 'hoc'
 import * as Components from 'components/lib'
 import * as S from './styles'
-import getPropsFromWpContent from '../../utility/getPropsFromWpContent'
-import api from '../../api'
+import getPropsFromWpContent from 'utility/getPropsFromWpContent'
+import api from 'api'
 
 
 const ccc =  {

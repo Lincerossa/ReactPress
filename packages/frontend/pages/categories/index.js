@@ -4,10 +4,10 @@ import Link from 'next/link'
 import { Background, Padder, Wrapper, List, Card, RichText } from 'components/lib';
 
 
-import globalProvider from '../../hoc'
+import globalProvider from 'hoc'
 import * as S from './styles'
 
-import api from '../../api'
+import api from 'api'
 
 class Page extends Component {
 

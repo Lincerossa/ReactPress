@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { Background, Padder, Wrapper, RichText } from 'components/lib';
 import axios from 'axios'
 
-import globalProvider from '../../hoc'
+import globalProvider from 'hoc'
+import api from 'api'
+import getPropsFromWpContent from 'utility/getPropsFromWpContent'
 import * as S from './styles'
-import api from '../../api'
-import getPropsFromWpContent from '../../utility/getPropsFromWpContent'
 
 
 var decode = (str) => {
